@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/style/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/font.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Регистрация</h2>
+    <form action="/registration" method="post">
+        <label for="username"></label>
+        <input type="text" id="username" name="username" placeholder="Имя пользователя">
+        <label for="email"></label>
+        <input type="text" id="email" name="email" placeholder="Email">
+        <label for="password"></label>
+        <input type="password" id="password" name="password" placeholder="Пароль">
+        <input type="submit" id="button" value="Зарегистрироваться">
+    </form>
+    <a href="/login">Уже есть аккаунт</a>
+</div>
+</body>
+</html>

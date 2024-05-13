@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Прачечная</title>
+    <link rel="stylesheet" href="/style/index_style.css">
+    <link rel="stylesheet" href="/style/header_footer_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/style/font.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header th:insert="header"></header>
+
+    <div class="background-image-holder"></div>
+
+    <main class="authorized">
+        <a class="hello">Привет, <span th:text="${username}"></span>!</a>
+        <div class="buttons">
+            <button><a href="/account">Посмотреть заявки</a></button>
+            <button><a href="/orders/new">Оставить заявку</a></button>
+        </div>
+    </main>
+
+    <footer th:insert="footer"></footer>
+
+</body>
+</html>

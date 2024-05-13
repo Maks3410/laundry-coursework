@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/form.css">
+    <link rel="stylesheet" href="/style/header_footer_style.css">
+    <title>Создание нового заказа</title>
+    <link rel="stylesheet" href="/style/font.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header th:insert="header"></header>
+
+<div class="form-container">
+    <h2>Новая заявка</h2>
+    <form id="orderForm" action="/orders/new" method="post" th:object="${orderDto}">
+        <label for="weight">Вес вещей (кг):</label>
+        <input type="number" id="weight" name="weight" min="1" th:field="*{weight}" required>
+
+        <label for="bookingDate">Дата бронирования:</label>
+        <input type="date" id="bookingDate" name="bookingDate" th:field="*{date}" required>
+
+        <div>
+        <p>Выберите, нужна ли сушка:</p>
+            <input type="radio" id="dryYes" name="dry" th:field="*{dry}" value="true">
+            <label for="dryYes">Да</label>
+            <input type="radio" id="dryNo" name="dry" th:field="*{dry}" value="false" checked>
+            <label for="dryNo">Нет</label>
+        </div>
+
+        <label for="price">Цена (руб):</label>
+        <input type="text" id="price" name="price" readonly th:field="*{price}" required>
+
+
+        <input type="submit" id="button" value="Добавить заказ">
+    </form>
+    <!-- Отображение сообщения об успешном добавлении заказа -->
+    <p th:if="${param.success}" style="color: green;">Заказ успешно добавлен!</p>
+</div>
+
+<footer th:insert="footer"></footer>
+
+<script>
+    function calculatePrice() {
+        const weight = parseFloat(document.getElementById('weight').value);
+        const dry = document.getElementById('dryYes').checked;
+        const pricePerKg = 100;
+        const priceExtraDry = 50;
+
+        let price = weight * pricePerKg;
+        if (dry) {
+            price += priceExtraDry;
+        }
+
+        document.getElementById('price').value = price.toFixed(2);
+    }
+
+    document.getElementById('weight').addEventListener('input', calculatePrice);
+    document.querySelectorAll('input[type=radio][name=dry]').forEach(function(radio) {
+        radio.addEventListener('change', calculatePrice);
+    });
+
+</script>
+</body>
+</html>

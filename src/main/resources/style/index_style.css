@@ -1,0 +1,59 @@
+body {
+    background-color: #ffffff;
+    color: #26a9e1;
+}
+
+.background-image-holder {
+    position: absolute;
+    width: 100%;
+    top: 35%;
+    height: 65%;
+    background: url("/static/background.gif");
+    background-size: revert;
+}
+
+.authorized {
+    display: flex;
+    position: absolute;
+    top: calc(30vh - 75px/2 - 30px);
+    left: calc(50vw - (175px * 2 + 40px) / 2);
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.authorized a {
+}
+
+.not-authorized {
+    position: absolute;
+    top: calc(50vh - 75px/2);
+    left: calc(50vw - (175px * 2 + 40px) / 2);
+}
+
+
+.hello {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 40px;
+}
+
+.buttons button {
+    color: #26a9e1;
+    height: 55px;
+    width: 175px;
+    border: #26a9e1 1px solid;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: scale 0.3s, background-color 0.3s;
+}
+
+
+.buttons button:hover {
+    scale: 1.1;
+    background-color: rgba(38, 169, 225, 0.33);
+}

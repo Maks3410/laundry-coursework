@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои заявки</title>
+    <link rel="stylesheet" href="/style/font.css">
+    <link rel="stylesheet" href="/style/account.css">
+    <link rel="stylesheet" href="/style/header_footer_style.css">
+    <link rel="stylesheet" href="/style/orders.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="background-image-holder">
+    <img src="/static/background-wave.png" alt="">
+</div>
+
+<header th:insert="header"></header>
+
+<div class="info-container">
+    <a class="username"><span th:text="${username}"></span></a>
+    <div class="email-container">
+        <a class="email"><span th:text="${email}"></span></a>
+<!--        <form action="/user/update-email/">-->
+<!--            <label for="new-email">Новый email:</label>-->
+<!--            <div style="display: flex; flex-direction: row; height: 50px">-->
+<!--                <input type="email" id="new-email">-->
+<!--                <input type="submit" id="button" value="Изменить email">-->
+<!--            </div>-->
+<!--        </form>-->
+    </div>
+</div>
+
+
+
+<div class="orders-container">
+    <h2>Мои заявки</h2>
+
+    <ul>
+
+        <li class="order-container">
+            <p>Дата</p>
+            <p>Вес белья</p>
+            <p>Доп. услуги</p>
+            <p>Цена</p>
+        </li>
+
+        <li th:each="order : ${orders}" class="order-container">
+            <p><span th:text="${order.date}"></span></p>
+            <p><span th:text="${order.weight}"></span> кг</p>
+            <p>
+                <span th:if="${order.dry}">с сушкой</span>
+                <span th:unless="${order.dry}">без сушки</span>
+            </p>
+            <p><span th:text="${order.price}"></span> руб.</p>
+        </li>
+
+    </ul>
+</div>
+
+<footer th:insert="footer"></footer>
+
+</body>
+</html>
